@@ -68,6 +68,7 @@ variable "multi_runner_config" {
       runner_additional_security_group_ids    = optional(list(string), [])
       scale_down_schedule_expression          = optional(string, "cron(*/5 * * * ? *)")
       scale_up_reserved_concurrent_executions = optional(number, 1)
+      scale_up_lambda_role_custom_policy_arn  = optional(string, null)
       userdata_template                       = optional(string, null)
       enable_jit_config                       = optional(bool, null)
       enable_runner_detailed_monitoring       = optional(bool, false)
@@ -519,6 +520,12 @@ variable "pool_lambda_reserved_concurrent_executions" {
   description = "Amount of reserved concurrent executions for the scale-up lambda function. A value of 0 disables lambda from being triggered and -1 removes any concurrency limitations."
   type        = number
   default     = 1
+}
+
+variable "pool_lambda_role_custom_policy_arn" {
+  description = "IAM policy to attach to the scale-up lambda function"
+  type        = string
+  default     = null
 }
 
 variable "enable_workflow_job_events_queue" {

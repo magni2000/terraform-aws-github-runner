@@ -76,6 +76,7 @@ module "runners" {
   runner_name_prefix               = each.value.runner_config.runner_name_prefix
 
   scale_up_reserved_concurrent_executions = each.value.runner_config.scale_up_reserved_concurrent_executions
+  scale_up_lambda_role_custom_policy_arn  = each.value.runner_config.scale_up_lambda_role_custom_policy_arn
 
   instance_profile_path     = var.instance_profile_path
   role_path                 = var.role_path
@@ -103,4 +104,5 @@ module "runners" {
   pool_lambda_timeout                        = var.pool_lambda_timeout
   pool_runner_owner                          = each.value.runner_config.pool_runner_owner
   pool_lambda_reserved_concurrent_executions = var.pool_lambda_reserved_concurrent_executions
+  pool_lambda_role_custom_policy_arn         = var.pool_lambda_role_custom_policy_arn
 }
